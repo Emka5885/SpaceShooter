@@ -13,6 +13,7 @@ struct GameData
 	sf::RenderWindow window;
 	AssetManager assets;
 	InputManager input;
+	sf::RectangleShape backgroundImage;
 };
 
 typedef std::shared_ptr<GameData> GameDataReference;

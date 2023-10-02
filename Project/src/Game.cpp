@@ -4,6 +4,9 @@
 
 void Game::Init()
 {
+	data->backgroundImage.setSize({ WIDTH, HEIGHT });
+	data->backgroundImage.setTexture(data->assets.GetTexture(background));
+
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Close | sf::Style::Titlebar);
 

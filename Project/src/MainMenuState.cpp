@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
 #include "Definitions.h"
-//#include "GameState.h"
+#include "GameState.h"
 
 MainMenuState::MainMenuState(GameDataReference& data) : data(data)
 {
@@ -8,9 +8,6 @@ MainMenuState::MainMenuState(GameDataReference& data) : data(data)
 
 void MainMenuState::Init()
 {
-	backgroundShape.setSize({ WIDTH, HEIGHT });
-	backgroundShape.setTexture(data->assets.GetTexture(background));
-
 	title = sf::Text(TITLE, data->assets.GetFont(defaultFont), 100);
 	title.setOrigin(title.getGlobalBounds().width / 2, title.getGlobalBounds().height / 2);
 	title.setPosition({ WIDTH / 2, 100 });
@@ -50,7 +47,7 @@ void MainMenuState::HandleInput()
 		else if (type == play)
 		{
 			data->machine.RemoveState();
-			//data->machine.AddState(stateReference(new GameState(data)), true);
+			data->machine.AddState(stateReference(new GameState(data)), true);
 		}
 		// clicked
 		if (data->input.isButtonClicked(quittButton.GetShape(), sf::Mouse::Left, data->window))
@@ -94,7 +91,7 @@ void MainMenuState::Update()
 void MainMenuState::Draw()
 {
 	data->window.clear(sf::Color::Black);
-	data->window.draw(backgroundShape);
+	data->window.draw(data->backgroundImage);
 
 	data->window.draw(titleShadow);
 	data->window.draw(title);

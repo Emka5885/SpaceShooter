@@ -18,8 +18,6 @@ public:
 private:
 	GameDataReference& data;
 
-	sf::RectangleShape backgroundShape;
-
 	sf::Text title;
 	sf::Text titleShadow;
 	Button playButton;
