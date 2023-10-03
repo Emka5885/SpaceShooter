@@ -10,6 +10,7 @@ AssetManager::AssetManager()
 void AssetManager::InitFonts()
 {
 	LoadFont(defaultFont, defaultFont_path);
+	LoadFont(storyFont, storyFont_path);
 }
 
 void AssetManager::InitTextures()

@@ -9,6 +9,7 @@ void Game::Init()
 
 	srand(time(NULL));
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Close | sf::Style::Titlebar);
+	data->window.setFramerateLimit(60);
 
 	data->machine.AddState(stateReference(new MainMenuState(data)), true);
 }

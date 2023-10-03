@@ -1,9 +1,9 @@
 #include "GameState.h"
 #include "MainMenuState.h"
+#include "Definitions.h"
 
 GameState::GameState(GameDataReference& data) : data(data)
 {
-	Init();
 }
 
 void GameState::Init()
@@ -30,13 +30,13 @@ void GameState::HandleInput()
 
 void GameState::Update()
 {
+	
 }
 
 void GameState::Draw()
 {
 	data->window.clear(sf::Color::Black);
 	data->window.draw(data->backgroundImage);
-
 
 
 	data->window.display();

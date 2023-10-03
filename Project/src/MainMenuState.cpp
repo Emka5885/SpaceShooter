@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
 #include "Definitions.h"
-#include "GameState.h"
+#include "StoryState.h"
 
 MainMenuState::MainMenuState(GameDataReference& data) : data(data)
 {
@@ -47,7 +47,7 @@ void MainMenuState::HandleInput()
 		else if (type == play)
 		{
 			data->machine.RemoveState();
-			data->machine.AddState(stateReference(new GameState(data)), true);
+			data->machine.AddState(stateReference(new StoryState(data)), true);
 		}
 		// clicked
 		if (data->input.isButtonClicked(quittButton.GetShape(), sf::Mouse::Left, data->window))

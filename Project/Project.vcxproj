@@ -28,6 +28,7 @@
     <ClCompile Include="src\MainMenuState.cpp" />
     <ClCompile Include="src\Spaceship.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
+    <ClCompile Include="src\StoryState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AssetManager.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\Spaceship.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\StateMachine.h" />
+    <ClInclude Include="src\StoryState.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
