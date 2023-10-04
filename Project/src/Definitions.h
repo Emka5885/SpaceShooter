@@ -14,3 +14,13 @@ constexpr const char* storyFont_path = "res/fonts/starguard.ttf";
 
 constexpr const char* background = "background";
 constexpr const char* background_path = "res/images/Background.png";
+
+constexpr const char* aliens_01_image = "aliens_01";
+constexpr const char* aliens_01_path = "res/images/aliens_01.png";
+constexpr const char* aliens_02_image = "aliens_02";
+constexpr const char* aliens_02_path = "res/images/aliens_02.png";
+constexpr const char* aliens_03_image = "aliens_03";
+constexpr const char* aliens_03_path = "res/images/aliens_03.png";
+
+constexpr const char* spaceship_image = "spaceship";
+constexpr const char* spaceship_path = "res/images/spaceship.png";

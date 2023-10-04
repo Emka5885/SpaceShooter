@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "Game.h"
+#include "Spaceship.h"
 
 class GameState :public State
 {
@@ -14,4 +15,8 @@ public:
 
 private:
 	GameDataReference& data;
+
+	Spaceship spaceship;
+
+	sf::RectangleShape aliens1, aliens2, aliens3;
 };
