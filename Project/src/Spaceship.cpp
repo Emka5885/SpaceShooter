@@ -1,10 +1,5 @@
 #include "Spaceship.h"
 
-Spaceship::Spaceship(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size) : position(position), size(size)
-{
-	Init(texture);
-}
-
 void Spaceship::Init(sf::Texture* texture)
 {
 	shape.setSize(size);
@@ -16,4 +11,9 @@ void Spaceship::Init(sf::Texture* texture)
 void Spaceship::Draw(sf::RenderWindow& window)
 {
 	window.draw(shape);
+}
+
+sf::RectangleShape& Spaceship::GetShape()
+{
+	return shape;
 }

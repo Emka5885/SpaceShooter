@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Alien.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -26,11 +27,13 @@
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainMenuState.cpp" />
+    <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Spaceship.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
     <ClCompile Include="src\StoryState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Alien.h" />
     <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Definitions.h" />
@@ -38,6 +41,7 @@
     <ClInclude Include="src\GameState.h" />
     <ClInclude Include="src\InputManager.h" />
     <ClInclude Include="src\MainMenuState.h" />
+    <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Spaceship.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\StateMachine.h" />

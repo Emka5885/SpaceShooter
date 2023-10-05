@@ -8,7 +8,7 @@ GameState::GameState(GameDataReference& data) : data(data)
 
 void GameState::Init()
 {
-	spaceship = Spaceship(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 }, { 128,128 });
+	player = Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
 
 	aliens1.setSize({ 64,64 });
 	aliens1.setOrigin(aliens1.getSize().x / 2, aliens1.getSize().y / 2);
@@ -48,7 +48,7 @@ void GameState::Draw()
 	data->window.clear(sf::Color::Black);
 	data->window.draw(data->backgroundImage);
 
-	spaceship.Draw(data->window);
+	player.Draw(data->window);
 
 	data->window.display();
 }
