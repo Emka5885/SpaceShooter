@@ -4,6 +4,8 @@
 constexpr const int WIDTH = 1200;
 constexpr const int HEIGHT = 800;
 
+constexpr const int PLAYER_SPEED = 3;
+
 constexpr const char* TITLE = "Space shooter";
 
 constexpr const char* defaultFont = "defaultFont";

@@ -30,12 +30,31 @@ void GameState::HandleInput()
 		{
 			data->window.close();
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+		if (data->input.isKeyPressed(sf::Keyboard::Escape))
 		{
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
 	}
+
+	sf::Vector2f move;
+	if (data->input.isKeyPressed(sf::Keyboard::W))
+	{
+		move.y = -1;
+	}
+	else if (data->input.isKeyPressed(sf::Keyboard::S))
+	{
+		move.y = 1;
+	}
+	if (data->input.isKeyPressed(sf::Keyboard::A))
+	{
+		move.x = -1;
+	}
+	else if (data->input.isKeyPressed(sf::Keyboard::D))
+	{
+		move.x = 1;
+	}
+	player.Move(move);
 }
 
 void GameState::Update()
