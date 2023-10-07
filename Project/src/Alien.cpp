@@ -10,3 +10,7 @@ Alien::Alien(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size)
 void Alien::Move()
 {
 }
+
+void Alien::Update()
+{
+}

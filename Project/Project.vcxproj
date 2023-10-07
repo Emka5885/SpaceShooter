@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\Alien.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameState.cpp" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="src\Alien.h" />
     <ClInclude Include="src\AssetManager.h" />
+    <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Definitions.h" />
     <ClInclude Include="src\Game.h" />

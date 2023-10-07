@@ -17,4 +17,5 @@ public:
 	sf::RectangleShape& GetShape();
 
 	virtual void Move(sf::Vector2f move) = 0;
+	virtual void Update() = 0;
 };

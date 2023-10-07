@@ -6,6 +6,10 @@ constexpr const int HEIGHT = 800;
 
 constexpr const int PLAYER_SPEED = 3;
 
+constexpr const int MAX_BULLETS = 10;
+constexpr const int BULLET_RADIUS = 5;
+constexpr const int BULLET_SPEED = 5;
+
 constexpr const char* TITLE = "Space shooter";
 
 constexpr const char* defaultFont = "defaultFont";

@@ -17,6 +17,7 @@ private:
 	GameDataReference& data;
 
 	Player player;
+	sf::Clock attackClock;
 
 	sf::RectangleShape aliens1, aliens2, aliens3;
 };

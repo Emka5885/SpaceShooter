@@ -35,6 +35,11 @@ void GameState::HandleInput()
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
+		if (data->input.isKeyPressed(sf::Keyboard::Space) && attackClock.getElapsedTime().asSeconds() > 0.1)
+		{
+			player.Attack();
+			attackClock.restart();
+		}
 	}
 
 	sf::Vector2f move;
@@ -59,7 +64,7 @@ void GameState::HandleInput()
 
 void GameState::Update()
 {
-	
+	player.Update();
 }
 
 void GameState::Draw()
@@ -68,6 +73,7 @@ void GameState::Draw()
 	data->window.draw(data->backgroundImage);
 
 	player.Draw(data->window);
+	player.BulletsDraw(data->window);
 
 	data->window.display();
 }
