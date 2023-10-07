@@ -52,5 +52,20 @@ void Player::Move(sf::Vector2f move)
 		}
 	}
 
+	int newPositionX = shape.getPosition().x + move.x * PLAYER_SPEED;
+	int newPositionY = shape.getPosition().y + move.y * PLAYER_SPEED;
+	if (newPositionX < 0 || newPositionX > WIDTH)
+	{
+		move.x = 0;
+	}
+	if (newPositionY < 0 || newPositionY > HEIGHT)
+	{
+		move.y = 0;
+	}
+
 	shape.move({ move.x * PLAYER_SPEED, move.y * PLAYER_SPEED });
+}
+
+void Player::Attack()
+{
 }
