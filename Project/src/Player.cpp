@@ -46,6 +46,11 @@ void Player::Attack()
 	}
 }
 
+const int& Player::NumberOfAvailableBullets()
+{
+	return bullets.size();
+}
+
 void Player::Move(sf::Vector2f move)
 {
 	if (move.y == 0)

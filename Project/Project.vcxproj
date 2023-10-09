@@ -32,6 +32,7 @@
     <ClCompile Include="src\Spaceship.cpp" />
     <ClCompile Include="src\StateMachine.cpp" />
     <ClCompile Include="src\StoryState.cpp" />
+    <ClCompile Include="src\Widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Alien.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\StateMachine.h" />
     <ClInclude Include="src\StoryState.h" />
+    <ClInclude Include="src\Widgets.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
