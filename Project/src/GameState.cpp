@@ -4,13 +4,13 @@
 
 GameState::GameState(GameDataReference& data) : data(data)
 {
+	widgets = new Widgets(data);
 }
 
 void GameState::Init()
 {
 	player = Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
-
-	widgets = Widgets(data);
+	widgets->SetNewNumberOfFullHearts(player.GetPlayerHealth(), true);
 
 	aliens1.setSize({ 64,64 });
 	aliens1.setOrigin(aliens1.getSize().x / 2, aliens1.getSize().y / 2);
@@ -67,7 +67,7 @@ void GameState::HandleInput()
 void GameState::Update()
 {
 	player.Update();
-	widgets.SetNewNumberOfBullets(player.NumberOfAvailableBullets());
+	widgets->SetNewNumberOfBullets(player.GetNumberOfAvailableBullets());
 }
 
 void GameState::Draw()
@@ -78,7 +78,7 @@ void GameState::Draw()
 	player.Draw(data->window);
 	player.BulletsDraw(data->window);
 
-	widgets.Draw(data->window);
+	widgets->Draw(data->window);
 
 	data->window.display();
 }

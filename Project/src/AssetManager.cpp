@@ -17,6 +17,8 @@ void AssetManager::InitTextures()
 {
 	LoadTexture(background, background_path);
 	LoadTexture(spaceship_image, spaceship_path);
+	LoadTexture(healthFull_image, healthFull_path);
+	LoadTexture(healthEmpty_image, healthEmpty_path);
 	LoadTexture(aliens_01_image, aliens_01_path);
 	LoadTexture(aliens_02_image, aliens_02_path);
 	LoadTexture(aliens_03_image, aliens_03_path);

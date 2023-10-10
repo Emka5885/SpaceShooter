@@ -6,6 +6,7 @@ Player::Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size)
 {
 	this->position = position;
 	this->size = size;
+	health = MAX_HEALTH;
 	Init(texture);
 }
 
@@ -44,11 +45,6 @@ void Player::Attack()
 
 		bullets.emplace_back(Bullet(shape.getPosition(), direction));
 	}
-}
-
-const int& Player::NumberOfAvailableBullets()
-{
-	return bullets.size();
 }
 
 void Player::Move(sf::Vector2f move)
@@ -131,4 +127,14 @@ void Player::BulletsDraw(sf::RenderWindow& window)
 	{
 		bullets[i].Draw(window);
 	}
+}
+
+const int& Player::GetNumberOfAvailableBullets()
+{
+	return bullets.size();
+}
+
+const int& Player::GetPlayerHealth()
+{
+	return health;
 }

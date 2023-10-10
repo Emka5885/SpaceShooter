@@ -7,16 +7,19 @@ class Player : public Spaceship
 {
 private:
 	std::vector<Bullet> bullets;
+	int health;
 
 public:
 	Player() {}
 	Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size = { 128, 128 });
 
 	void Attack();
-	const int& NumberOfAvailableBullets();
 
 	void Move(sf::Vector2f move);
 	void Update();
 
 	void BulletsDraw(sf::RenderWindow& window);
+
+	const int& GetNumberOfAvailableBullets();
+	const int& GetPlayerHealth();
 };

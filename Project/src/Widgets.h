@@ -5,15 +5,17 @@
 class Widgets
 {
 private:
-	sf::Text numberOfBullets;
+	GameDataReference& data;
 
+	sf::Text numberOfBullets;
+	std::vector<sf::RectangleShape> hearts;
 
 public:
-	Widgets();
 	Widgets(GameDataReference& data);
 
-	void Init(GameDataReference& data);
+	void Init();
 
+	void SetNewNumberOfFullHearts(const int& number, bool init = false);
 	void SetNewNumberOfBullets(const int& number);
 
 	void Draw(sf::RenderWindow& window);

@@ -20,7 +20,7 @@ private:
 	Player player;
 	sf::Clock attackClock;
 
-	Widgets widgets;
+	Widgets* widgets;
 
 	sf::RectangleShape aliens1, aliens2, aliens3;
 };

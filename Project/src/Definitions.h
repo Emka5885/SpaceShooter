@@ -6,6 +6,8 @@ constexpr const int HEIGHT = 800;
 
 constexpr const int PLAYER_SPEED = 3;
 
+constexpr const int MAX_HEALTH = 3;
+
 constexpr const int MAX_BULLETS = 10;
 constexpr const int BULLET_RADIUS = 5;
 constexpr const int BULLET_SPEED = 5;
@@ -30,3 +32,8 @@ constexpr const char* aliens_03_path = "res/images/aliens_03.png";
 
 constexpr const char* spaceship_image = "spaceship";
 constexpr const char* spaceship_path = "res/images/spaceship.png";
+
+constexpr const char* healthFull_image = "health_full";
+constexpr const char* healthFull_path = "res/images/health/health_full.png";
+constexpr const char* healthEmpty_image = "health_empty";
+constexpr const char* healthEmpty_path = "res/images/health/health_empty.png";
