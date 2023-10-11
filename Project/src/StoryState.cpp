@@ -47,15 +47,17 @@ void StoryState::HandleInput()
 		{
 			data->window.close();
 		}
-		if (data->input.isKeyPressed(sf::Keyboard::Escape))
+		if (data->input.isKeyPressed(sf::Keyboard::Escape) && !changeState)
 		{
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
+			changeState = true;
 		}
-		if (data->input.isKeyPressed(sf::Keyboard::Space))
+		if (data->input.isKeyPressed(sf::Keyboard::Space) && !changeState)
 		{
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new GameState(data)), true);
+			changeState = true;
 		}
 	}
 }

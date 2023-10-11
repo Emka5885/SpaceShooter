@@ -2,6 +2,7 @@
 #include "State.h"
 #include "Game.h"
 #include "Player.h"
+#include "Alien.h"
 #include "Widgets.h"
 
 class GameState :public State
@@ -17,10 +18,12 @@ public:
 private:
 	GameDataReference& data;
 
-	Player player;
+	Player* player;
 	sf::Clock attackClock;
 
 	Widgets* widgets;
 
-	sf::RectangleShape aliens1, aliens2, aliens3;
+	Alien* alien1 = nullptr;
+	Alien* alien2 = nullptr;
+	Alien* alien3 = nullptr;
 };

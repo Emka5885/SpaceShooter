@@ -10,7 +10,6 @@ private:
 	int health;
 
 public:
-	Player() {}
 	Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size = { 128, 128 });
 
 	void Attack();

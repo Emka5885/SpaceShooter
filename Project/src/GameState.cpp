@@ -1,25 +1,20 @@
 #include "GameState.h"
 #include "MainMenuState.h"
 #include "Definitions.h"
+#include <iostream>
 
 GameState::GameState(GameDataReference& data) : data(data)
 {
 	widgets = new Widgets(data);
+	player = new Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
+	alien1 = new Alien(data->assets.GetTexture(aliens_01_image));
+	alien2 = new Alien(data->assets.GetTexture(aliens_02_image));
+	alien3 = new Alien(data->assets.GetTexture(aliens_03_image));
 }
 
 void GameState::Init()
 {
-	player = Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
-	widgets->SetNewNumberOfFullHearts(player.GetPlayerHealth(), true);
-
-	aliens1.setSize({ 64,64 });
-	aliens1.setOrigin(aliens1.getSize().x / 2, aliens1.getSize().y / 2);
-	aliens2 = aliens1;
-	aliens3 = aliens1;
-
-	aliens1.setTexture(data->assets.GetTexture(aliens_01_image));
-	aliens2.setTexture(data->assets.GetTexture(aliens_02_image));
-	aliens3.setTexture(data->assets.GetTexture(aliens_03_image));
+	widgets->SetNewNumberOfFullHearts(player->GetPlayerHealth(), true);
 }
 
 void GameState::HandleInput()
@@ -39,7 +34,7 @@ void GameState::HandleInput()
 		}
 		if (data->input.isKeyPressed(sf::Keyboard::Space) && attackClock.getElapsedTime().asSeconds() > 0.1)
 		{
-			player.Attack();
+			player->Attack();
 			attackClock.restart();
 		}
 	}
@@ -61,13 +56,13 @@ void GameState::HandleInput()
 	{
 		move.x = 1;
 	}
-	player.Move(move);
+	player->Move(move);
 }
 
 void GameState::Update()
 {
-	player.Update();
-	widgets->SetNewNumberOfBullets(player.GetNumberOfAvailableBullets());
+	player->Update();
+	widgets->SetNewNumberOfBullets(player->GetNumberOfAvailableBullets());
 }
 
 void GameState::Draw()
@@ -75,8 +70,8 @@ void GameState::Draw()
 	data->window.clear(sf::Color::Black);
 	data->window.draw(data->backgroundImage);
 
-	player.Draw(data->window);
-	player.BulletsDraw(data->window);
+	player->Draw(data->window);
+	player->BulletsDraw(data->window);
 
 	widgets->Draw(data->window);
 

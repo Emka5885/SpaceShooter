@@ -8,9 +8,9 @@ private:
 
 
 public:
-	Alien() {}
-	Alien(sf::Texture* texture, sf::Vector2f position = { -150, -150 }, sf::Vector2f size = { 64, 64 });
+	Alien(sf::Texture* texture, sf::Vector2f size = { 64, 64 });
 
-	void Move();
+	sf::Vector2f InitPosition();
+	void Move(sf::Vector2f move);
 	void Update();
 };

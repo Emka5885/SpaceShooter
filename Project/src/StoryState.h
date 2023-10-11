@@ -21,5 +21,7 @@ private:
 
 	int actuallyStorySize = 1;
 
+	bool changeState = false;
+
 	sf::Clock clock;
 };
