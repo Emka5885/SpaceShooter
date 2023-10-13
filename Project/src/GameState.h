@@ -23,7 +23,8 @@ private:
 
 	Widgets* widgets;
 
-	Alien* alien1 = nullptr;
-	Alien* alien2 = nullptr;
-	Alien* alien3 = nullptr;
+	std::vector<Alien*> aliens;
+	sf::Clock newAlienClock;
+
+	int newAlienCounter = 5;
 };

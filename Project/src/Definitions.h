@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+constexpr const double PI = 3.14159265359;
+
 constexpr const int WIDTH = 1200;
 constexpr const int HEIGHT = 800;
 

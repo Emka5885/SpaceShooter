@@ -7,9 +7,21 @@ GameState::GameState(GameDataReference& data) : data(data)
 {
 	widgets = new Widgets(data);
 	player = new Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
-	alien1 = new Alien(data->assets.GetTexture(aliens_01_image));
-	alien2 = new Alien(data->assets.GetTexture(aliens_02_image));
-	alien3 = new Alien(data->assets.GetTexture(aliens_03_image));
+
+	int alienTexture = rand() % 3;
+	if (alienTexture == 0)
+	{
+		aliens.emplace_back(new Alien(data->assets.GetTexture(aliens_01_image)));
+	}
+	else if (alienTexture == 1)
+	{
+		aliens.emplace_back(new Alien(data->assets.GetTexture(aliens_02_image)));
+	}
+	else
+	{
+		aliens.emplace_back(new Alien(data->assets.GetTexture(aliens_03_image)));
+	}
+	newAlienClock.restart();
 }
 
 void GameState::Init()
@@ -63,6 +75,53 @@ void GameState::Update()
 {
 	player->Update();
 	widgets->SetNewNumberOfBullets(player->GetNumberOfAvailableBullets());
+	for (int i = 0; i < aliens.size(); i++)
+	{
+		aliens[i]->Update();
+	}
+
+	for (int i = 0; i < aliens.size(); i++)
+	{
+		if (aliens[i]->GetDestroy())
+		{
+			delete aliens[i];
+
+			int alienTexture = rand() % 3;
+			if (alienTexture == 0)
+			{
+				aliens[i] = new Alien(data->assets.GetTexture(aliens_01_image));
+			}
+			else if (alienTexture == 1)
+			{
+				aliens[i] = new Alien(data->assets.GetTexture(aliens_02_image));
+			}
+			else
+			{
+				aliens[i] = new Alien(data->assets.GetTexture(aliens_03_image));
+			}
+			break;
+		}
+	}
+
+	if (newAlienClock.getElapsedTime().asSeconds() >= newAlienCounter)
+	{
+		int alienTexture = rand() % 3;
+		if (alienTexture == 0)
+		{
+			aliens.emplace_back(new Alien(data->assets.GetTexture(aliens_01_image)));
+		}
+		else if (alienTexture == 1)
+		{
+			aliens.emplace_back(new Alien(data->assets.GetTexture(aliens_02_image)));
+		}
+		else
+		{
+			aliens.emplace_back(new Alien(data->assets.GetTexture(aliens_03_image)));
+		}
+		newAlienClock.restart();
+
+		newAlienCounter += 3;
+	}
 }
 
 void GameState::Draw()
@@ -71,6 +130,12 @@ void GameState::Draw()
 	data->window.draw(data->backgroundImage);
 
 	player->Draw(data->window);
+
+	for (int i = 0; i < aliens.size(); i++)
+	{
+		aliens[i]->Draw(data->window);
+	}
+
 	player->BulletsDraw(data->window);
 
 	widgets->Draw(data->window);
