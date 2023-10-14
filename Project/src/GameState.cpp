@@ -122,6 +122,18 @@ void GameState::Update()
 
 		newAlienCounter += 3;
 	}
+
+	if (collision.CheckIfAlienHitPlayer(aliens, *player))
+	{
+		player->RemoveOneHeart();
+		widgets->SetNewNumberOfFullHearts(player->GetPlayerHealth());
+	}
+
+	if (player->GetPlayerHealth() <= 0)
+	{
+		endGame = true;
+		std::cout << "you lost\n";
+	}
 }
 
 void GameState::Draw()

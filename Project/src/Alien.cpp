@@ -110,14 +110,14 @@ void Alien::CheckIfDestroy()
 		{
 			if (shape.getPosition().y > endPosition.y || shape.getPosition().x > endPosition.x)
 			{
-				destroy = true;
+				SetDestroy(true);
 			}
 		}
 		else
 		{
 			if (shape.getPosition().y < endPosition.y || shape.getPosition().x < endPosition.x)
 			{
-				destroy = true;
+				SetDestroy(true);
 			}
 		}
 	}
@@ -127,17 +127,22 @@ void Alien::CheckIfDestroy()
 		{
 			if (shape.getPosition().y > endPosition.y || shape.getPosition().x < endPosition.x)
 			{
-				destroy = true;
+				SetDestroy(true);
 			}
 		}
 		else
 		{
 			if (shape.getPosition().y < endPosition.y || shape.getPosition().x < endPosition.x)
 			{
-				destroy = true;
+				SetDestroy(true);
 			}
 		}
 	}
+}
+
+void Alien::SetDestroy(bool destroy)
+{
+	this->destroy = destroy;
 }
 
 const bool& Alien::GetDestroy()

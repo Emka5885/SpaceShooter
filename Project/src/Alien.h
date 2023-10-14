@@ -19,6 +19,7 @@ public:
 	void Update();
 
 	void CheckIfDestroy();
+	void SetDestroy(bool destroy);
 
 	const bool& GetDestroy();
 };

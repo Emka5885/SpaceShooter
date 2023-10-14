@@ -9,6 +9,8 @@ private:
 	std::vector<Bullet> bullets;
 	int health;
 
+	sf::CircleShape collisionCircle;
+
 public:
 	Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size = { 128, 128 });
 
@@ -19,6 +21,9 @@ public:
 
 	void BulletsDraw(sf::RenderWindow& window);
 
+	void RemoveOneHeart();
+
 	const int& GetNumberOfAvailableBullets();
 	const int& GetPlayerHealth();
+	const sf::CircleShape& GetCollisionCircle();
 };

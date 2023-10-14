@@ -8,6 +8,10 @@ Player::Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size)
 	this->size = size;
 	health = MAX_HEALTH;
 	Init(texture);
+
+	collisionCircle.setRadius(size.x / 2);
+	collisionCircle.setOrigin(collisionCircle.getRadius(), collisionCircle.getRadius());
+	collisionCircle.setPosition(position);
 }
 
 void Player::Attack()
@@ -103,6 +107,7 @@ void Player::Move(sf::Vector2f move)
 	}
 
 	shape.move({ move.x * PLAYER_SPEED, move.y * PLAYER_SPEED });
+	collisionCircle.setPosition(shape.getPosition().x, shape.getPosition().y);
 }
 
 void Player::Update()
@@ -129,6 +134,11 @@ void Player::BulletsDraw(sf::RenderWindow& window)
 	}
 }
 
+void Player::RemoveOneHeart()
+{
+	health--;
+}
+
 const int& Player::GetNumberOfAvailableBullets()
 {
 	return bullets.size();
@@ -137,4 +147,9 @@ const int& Player::GetNumberOfAvailableBullets()
 const int& Player::GetPlayerHealth()
 {
 	return health;
+}
+
+const sf::CircleShape& Player::GetCollisionCircle()
+{
+	return collisionCircle;
 }

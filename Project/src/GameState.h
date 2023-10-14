@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Alien.h"
 #include "Widgets.h"
+#include "Collision.h"
 
 class GameState :public State
 {
@@ -23,8 +24,12 @@ private:
 
 	Widgets* widgets;
 
+	Collision collision;
+
 	std::vector<Alien*> aliens;
 	sf::Clock newAlienClock;
 
 	int newAlienCounter = 5;
+
+	bool endGame = false;
 };
