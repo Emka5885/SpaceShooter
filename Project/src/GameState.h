@@ -30,6 +30,4 @@ private:
 	sf::Clock newAlienClock;
 
 	int newAlienCounter = 5;
-
-	bool endGame = false;
 };

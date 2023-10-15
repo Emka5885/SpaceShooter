@@ -3,6 +3,7 @@
 #include "GameState.h"
 #include "Definitions.h"
 #include <fstream>
+#include <iostream>
 
 StoryState::StoryState(GameDataReference& data) : data(data)
 {
@@ -34,7 +35,18 @@ void StoryState::Init()
 		story.emplace_back(text);
 	}
 
+	skipText = sf::Text("Press SPACE to skip", data->assets.GetFont(defaultFont), 20);
+	skipText.setOrigin(skipText.getGlobalBounds().width, skipText.getGlobalBounds().height);
+	skipText.setPosition(WIDTH - 25, HEIGHT - 25);
+	skipText.setFillColor(sf::Color(255, 255, 255, skipAlpha));
+
+	skipShape.setFillColor(sf::Color(0, 0, 0, skipAlpha));
+	skipShape.setSize({ skipText.getGlobalBounds().width + 10, skipText.getGlobalBounds().height + 10 });
+	skipShape.setOrigin(skipShape.getGlobalBounds().width, skipShape.getGlobalBounds().height);
+	skipShape.setPosition(skipText.getPosition().x + 5, skipText.getPosition().y + 5);
+
 	clock.restart();
+	skipClock.restart();
 }
 
 void StoryState::HandleInput()
@@ -89,12 +101,39 @@ void StoryState::Update()
 		data->machine.RemoveState();
 		data->machine.AddState(stateReference(new GameState(data)), true);
 	}
+
+	if (skipClock.getElapsedTime().asSeconds() >= 5 && displaySkip)
+	{
+		if (skipAlpha < 255)
+		{
+			skipAlpha += 5;
+			skipText.setFillColor(sf::Color(255, 255, 255, skipAlpha));
+			skipShape.setFillColor(sf::Color(0, 0, 0, skipAlpha));
+		}
+		else
+		{
+			displaySkip = false;
+			skipClock.restart();
+		}
+	}
+	else if (skipClock.getElapsedTime().asSeconds() >= 8 && !displaySkip)
+	{
+		if (skipAlpha > 0)
+		{
+			skipAlpha -= 5;
+			skipText.setFillColor(sf::Color(255, 255, 255, skipAlpha));
+			skipShape.setFillColor(sf::Color(0, 0, 0, skipAlpha));
+		}
+	}
 }
 
 void StoryState::Draw()
 {
 	data->window.clear(sf::Color::Black);
 	data->window.draw(data->backgroundImage);
+
+	data->window.draw(skipShape);
+	data->window.draw(skipText);
 
 	for (int i = 0; i < story.size(); i++)
 	{

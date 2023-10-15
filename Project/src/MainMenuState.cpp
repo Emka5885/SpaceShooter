@@ -24,7 +24,7 @@ void MainMenuState::Init()
 	buttonsText.setOutlineThickness(2);
 	sf::Vector2f buttonsSize(250, 100);
 
-	playButton = Button(buttonsSize, buttonsText, {WIDTH / 2, title.getPosition().y + title.getGlobalBounds().height + 115}, 10);
+	playButton = Button(buttonsSize, buttonsText, {WIDTH / 2, 305}, 10);
 
 	buttonsText.setString("Quitt");
 	quittButton = Button(buttonsSize, buttonsText, { WIDTH / 2, playButton.GetShape().getPosition().y + 200 }, 10);

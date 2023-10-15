@@ -1,5 +1,6 @@
 #include "GameState.h"
 #include "MainMenuState.h"
+#include "EndState.h"
 #include "Definitions.h"
 #include <iostream>
 
@@ -131,8 +132,8 @@ void GameState::Update()
 
 	if (player->GetPlayerHealth() <= 0)
 	{
-		endGame = true;
-		std::cout << "you lost\n";
+		data->machine.RemoveState();
+		data->machine.AddState(stateReference(new EndState(data)), true);
 	}
 }
 

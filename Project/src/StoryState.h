@@ -23,5 +23,11 @@ private:
 
 	bool changeState = false;
 
+	sf::Text skipText;
+	sf::RectangleShape skipShape;
+	int skipAlpha = 0;
+	bool displaySkip = true;
+
 	sf::Clock clock;
+	sf::Clock skipClock;
 };
