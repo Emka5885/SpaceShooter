@@ -24,3 +24,7 @@ bool Collision::CheckIfAlienHitPlayer(std::vector<Alien*>& aliens, Player& playe
 
 	return false;
 }
+
+void Collision::CheckIfBulletHitAlien(std::vector<Alien*>& aliens, std::vector<Bullet>& bullet)
+{
+}

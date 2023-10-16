@@ -14,7 +14,14 @@ void Widgets::Init()
 	numberOfBullets.setOutlineColor(sf::Color::Black);
 	numberOfBullets.setOutlineThickness(2);
 	numberOfBullets.setOrigin(numberOfBullets.getGlobalBounds().width / 2, numberOfBullets.getGlobalBounds().height / 2);
-	numberOfBullets.setPosition(WIDTH - 50 - numberOfBullets.getGlobalBounds().width / 2, HEIGHT - 50 - numberOfBullets.getGlobalBounds().height / 2);
+	numberOfBullets.setPosition(WIDTH / 2, HEIGHT - 75 - numberOfBullets.getGlobalBounds().height / 2);
+
+	scoreText = sf::Text("Score: 0", data->assets.GetFont(defaultFont), 50);
+	scoreText.setFillColor(sf::Color::White);
+	scoreText.setOutlineColor(sf::Color::Black);
+	scoreText.setOutlineThickness(2);
+	scoreText.setOrigin(scoreText.getGlobalBounds().width, scoreText.getGlobalBounds().height);
+	scoreText.setPosition(WIDTH - 50, 65);
 }
 
 void Widgets::SetNewNumberOfFullHearts(const int& number, bool init)
@@ -44,7 +51,14 @@ void Widgets::SetNewNumberOfBullets(const int& number)
 {
 	numberOfBullets.setString("Available bullets: " + std::to_string(MAX_BULLETS - number));
 	numberOfBullets.setOrigin(numberOfBullets.getGlobalBounds().width / 2, numberOfBullets.getGlobalBounds().height / 2);
-	numberOfBullets.setPosition(WIDTH - 50 - numberOfBullets.getGlobalBounds().width / 2, HEIGHT - 50 - numberOfBullets.getGlobalBounds().height / 2);
+	numberOfBullets.setPosition(WIDTH / 2, HEIGHT - 75 - numberOfBullets.getGlobalBounds().height / 2);
+}
+
+void Widgets::SetNewScore(const int& score)
+{
+	scoreText.setString("Score: " + std::to_string(score));
+	scoreText.setOrigin(scoreText.getGlobalBounds().width, scoreText.getGlobalBounds().height);
+	scoreText.setPosition(WIDTH - 50, 65);
 }
 
 void Widgets::Draw(sf::RenderWindow& window)
@@ -54,5 +68,6 @@ void Widgets::Draw(sf::RenderWindow& window)
 		window.draw(hearts[i]);
 	}
 
+	window.draw(scoreText);
 	window.draw(numberOfBullets);
 }
