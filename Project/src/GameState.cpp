@@ -168,7 +168,7 @@ void GameState::Update()
 	if (player->GetPlayerHealth() <= 0)
 	{
 		data->machine.RemoveState();
-		data->machine.AddState(stateReference(new EndState(data)), true);
+		data->machine.AddState(stateReference(new EndState(data, widgets->GetScore())), true);
 	}
 }
 

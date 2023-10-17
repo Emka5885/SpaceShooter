@@ -12,17 +12,12 @@ Player::Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size)
 	collisionCircle.setRadius(size.x / 2);
 	collisionCircle.setOrigin(collisionCircle.getRadius(), collisionCircle.getRadius());
 	collisionCircle.setPosition(position);
-	shape.setOutlineColor(sf::Color::Green);
-	shape.setOutlineThickness(5);
 }
 
 void Player::Attack(sf::Texture* bulletTexture)
 {
-	if (bullets.size() < MAX_BULLETS - 1)
-	{
-		bullets.emplace_back(Bullet(shape.getPosition(), shape.getRotation(), bulletTexture));
-		bullets.emplace_back(Bullet(shape.getPosition(), shape.getRotation(), bulletTexture, false));
-	}
+	bullets.emplace_back(Bullet(shape.getPosition(), shape.getRotation(), bulletTexture));
+	bullets.emplace_back(Bullet(shape.getPosition(), shape.getRotation(), bulletTexture, false));
 }
 
 void Player::Move(sf::Vector2f move)

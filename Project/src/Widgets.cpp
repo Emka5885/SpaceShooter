@@ -9,7 +9,7 @@ Widgets::Widgets(GameDataReference& data) : data(data)
 
 void Widgets::Init()
 {
-	numberOfBullets = sf::Text("Available bullets: " + std::to_string(MAX_BULLETS), data->assets.GetFont(defaultFont), 30);
+	numberOfBullets = sf::Text("Attack charge", data->assets.GetFont(defaultFont), 30);
 	numberOfBullets.setFillColor(sf::Color::White);
 	numberOfBullets.setOutlineColor(sf::Color::Black);
 	numberOfBullets.setOutlineThickness(2);
@@ -49,9 +49,7 @@ void Widgets::SetNewNumberOfFullHearts(const int& number, bool init)
 
 void Widgets::SetNewNumberOfBullets(const int& number)
 {
-	numberOfBullets.setString("Available bullets: " + std::to_string(MAX_BULLETS - number));
-	numberOfBullets.setOrigin(numberOfBullets.getGlobalBounds().width / 2, numberOfBullets.getGlobalBounds().height / 2);
-	numberOfBullets.setPosition(WIDTH / 2, HEIGHT - 75 - numberOfBullets.getGlobalBounds().height / 2);
+	
 }
 
 void Widgets::SetNewScore(const int& score)

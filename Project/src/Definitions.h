@@ -10,7 +10,7 @@ constexpr const int PLAYER_SPEED = 3;
 
 constexpr const int MAX_HEALTH = 3;
 
-constexpr const int MAX_BULLETS = 10;
+constexpr const int MAX_ATTACK_CHARGE_THRESHOLD = 25;
 constexpr const int BULLET_RADIUS = 20;
 constexpr const int BULLET_SPEED = 5;
 
