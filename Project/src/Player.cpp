@@ -12,42 +12,16 @@ Player::Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size)
 	collisionCircle.setRadius(size.x / 2);
 	collisionCircle.setOrigin(collisionCircle.getRadius(), collisionCircle.getRadius());
 	collisionCircle.setPosition(position);
+	shape.setOutlineColor(sf::Color::Green);
+	shape.setOutlineThickness(5);
 }
 
-void Player::Attack()
+void Player::Attack(sf::Texture* bulletTexture)
 {
-	if (bullets.size() < MAX_BULLETS)
+	if (bullets.size() < MAX_BULLETS - 1)
 	{
-		sf::Vector2f direction;
-		switch (int(shape.getRotation()))
-		{
-		case 0:
-			direction = { 0, -1 };
-			break;
-		case 45:
-			direction = { 1, -1 };
-			break;
-		case 90:
-			direction = { 1, 0 };
-			break;
-		case 135:
-			direction = { 1, 1 };
-			break;
-		case 180:
-			direction = { 0, 1 };
-			break;
-		case 225:
-			direction = { -1, 1 };
-			break;
-		case 270:
-			direction = { -1, 0 };
-			break;
-		case 315:
-			direction = { -1, -1 };
-			break;
-		}
-
-		bullets.emplace_back(Bullet(shape.getPosition(), direction));
+		bullets.emplace_back(Bullet(shape.getPosition(), shape.getRotation(), bulletTexture));
+		bullets.emplace_back(Bullet(shape.getPosition(), shape.getRotation(), bulletTexture, false));
 	}
 }
 
@@ -137,6 +111,11 @@ void Player::BulletsDraw(sf::RenderWindow& window)
 void Player::RemoveOneHeart()
 {
 	health--;
+}
+
+std::vector<Bullet>& Player::GetBullets()
+{
+	return bullets;
 }
 
 const int& Player::GetNumberOfAvailableBullets()

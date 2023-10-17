@@ -10,6 +10,7 @@ private:
 	sf::Text numberOfBullets;
 	std::vector<sf::RectangleShape> hearts;
 	sf::Text scoreText;
+	int score = 0;
 
 public:
 	Widgets(GameDataReference& data);
@@ -21,4 +22,6 @@ public:
 	void SetNewScore(const int& score);
 
 	void Draw(sf::RenderWindow& window);
+
+	const int& GetScore();
 };

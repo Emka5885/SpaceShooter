@@ -12,5 +12,5 @@ public:
 	Collision();
 
 	bool CheckIfAlienHitPlayer(std::vector<Alien*>& aliens, Player& player);
-	void CheckIfBulletHitAlien(std::vector<Alien*>& aliens, std::vector<Bullet>& bullet);
+	int CheckIfBulletHitAlien(std::vector<Alien*>& aliens, std::vector<Bullet>& bullet);
 };

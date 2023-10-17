@@ -11,7 +11,7 @@ constexpr const int PLAYER_SPEED = 3;
 constexpr const int MAX_HEALTH = 3;
 
 constexpr const int MAX_BULLETS = 10;
-constexpr const int BULLET_RADIUS = 5;
+constexpr const int BULLET_RADIUS = 20;
 constexpr const int BULLET_SPEED = 5;
 
 constexpr const char* TITLE = "Space shooter";
@@ -39,3 +39,24 @@ constexpr const char* healthFull_image = "health_full";
 constexpr const char* healthFull_path = "res/images/health/health_full.png";
 constexpr const char* healthEmpty_image = "health_empty";
 constexpr const char* healthEmpty_path = "res/images/health/health_empty.png";
+
+constexpr const char* bullet_01_image = "bullet_01";
+constexpr const char* bullet_01_path = "res/images/bullets/bullet_01.png";
+constexpr const char* bullet_02_image = "bullet_02";
+constexpr const char* bullet_02_path = "res/images/bullets/bullet_02.png";
+constexpr const char* bullet_03_image = "bullet_03";
+constexpr const char* bullet_03_path = "res/images/bullets/bullet_03.png";
+constexpr const char* bullet_04_image = "bullet_04";
+constexpr const char* bullet_04_path = "res/images/bullets/bullet_04.png";
+constexpr const char* bullet_05_image = "bullet_05";
+constexpr const char* bullet_05_path = "res/images/bullets/bullet_05.png";
+constexpr const char* bullet_06_image = "bullet_06";
+constexpr const char* bullet_06_path = "res/images/bullets/bullet_06.png";
+constexpr const char* bullet_07_image = "bullet_07";
+constexpr const char* bullet_07_path = "res/images/bullets/bullet_07.png";
+constexpr const char* bullet_08_image = "bullet_08";
+constexpr const char* bullet_08_path = "res/images/bullets/bullet_08.png";
+constexpr const char* bullet_09_image = "bullet_09";
+constexpr const char* bullet_09_path = "res/images/bullets/bullet_09.png";
+constexpr const char* bullet_10_image = "bullet_10";
+constexpr const char* bullet_10_path = "res/images/bullets/bullet_10.png";

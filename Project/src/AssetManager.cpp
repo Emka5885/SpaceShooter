@@ -19,9 +19,21 @@ void AssetManager::InitTextures()
 	LoadTexture(spaceship_image, spaceship_path);
 	LoadTexture(healthFull_image, healthFull_path);
 	LoadTexture(healthEmpty_image, healthEmpty_path);
+
 	LoadTexture(aliens_01_image, aliens_01_path);
 	LoadTexture(aliens_02_image, aliens_02_path);
 	LoadTexture(aliens_03_image, aliens_03_path);
+
+	LoadTexture(bullet_01_image, bullet_01_path);
+	LoadTexture(bullet_02_image, bullet_02_path);
+	LoadTexture(bullet_03_image, bullet_03_path);
+	LoadTexture(bullet_04_image, bullet_04_path);
+	LoadTexture(bullet_05_image, bullet_05_path);
+	LoadTexture(bullet_06_image, bullet_06_path);
+	LoadTexture(bullet_07_image, bullet_07_path);
+	LoadTexture(bullet_08_image, bullet_08_path);
+	LoadTexture(bullet_09_image, bullet_09_path);
+	LoadTexture(bullet_10_image, bullet_10_path);
 }
 
 void AssetManager::LoadTexture(const char* name, const char* fileName)

@@ -47,7 +47,40 @@ void GameState::HandleInput()
 		}
 		if (data->input.isKeyPressed(sf::Keyboard::Space) && attackClock.getElapsedTime().asSeconds() > 0.1)
 		{
-			player->Attack();
+			int randomBullet = rand() % 10;
+			switch (randomBullet)
+			{
+			case 0:
+				player->Attack(data->assets.GetTexture(bullet_01_image));
+				break;
+			case 1:
+				player->Attack(data->assets.GetTexture(bullet_02_image));
+				break;
+			case 2:
+				player->Attack(data->assets.GetTexture(bullet_03_image));
+				break;
+			case 3:
+				player->Attack(data->assets.GetTexture(bullet_04_image));
+				break;
+			case 4:
+				player->Attack(data->assets.GetTexture(bullet_05_image));
+				break;
+			case 5:
+				player->Attack(data->assets.GetTexture(bullet_06_image));
+				break;
+			case 6:
+				player->Attack(data->assets.GetTexture(bullet_07_image));
+				break;
+			case 7:
+				player->Attack(data->assets.GetTexture(bullet_08_image));
+				break;
+			case 8:
+				player->Attack(data->assets.GetTexture(bullet_09_image));
+				break;
+			case 9:
+				player->Attack(data->assets.GetTexture(bullet_10_image));
+				break;
+			}
 			attackClock.restart();
 		}
 	}
@@ -130,6 +163,8 @@ void GameState::Update()
 		widgets->SetNewNumberOfFullHearts(player->GetPlayerHealth());
 	}
 
+	widgets->SetNewScore(widgets->GetScore() + collision.CheckIfBulletHitAlien(aliens, player->GetBullets()));
+
 	if (player->GetPlayerHealth() <= 0)
 	{
 		data->machine.RemoveState();
@@ -142,14 +177,14 @@ void GameState::Draw()
 	data->window.clear(sf::Color::Black);
 	data->window.draw(data->backgroundImage);
 
-	player->Draw(data->window);
-
 	for (int i = 0; i < aliens.size(); i++)
 	{
 		aliens[i]->Draw(data->window);
 	}
 
 	player->BulletsDraw(data->window);
+
+	player->Draw(data->window);
 
 	widgets->Draw(data->window);
 

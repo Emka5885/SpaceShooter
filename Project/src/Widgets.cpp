@@ -16,7 +16,7 @@ void Widgets::Init()
 	numberOfBullets.setOrigin(numberOfBullets.getGlobalBounds().width / 2, numberOfBullets.getGlobalBounds().height / 2);
 	numberOfBullets.setPosition(WIDTH / 2, HEIGHT - 75 - numberOfBullets.getGlobalBounds().height / 2);
 
-	scoreText = sf::Text("Score: 0", data->assets.GetFont(defaultFont), 50);
+	scoreText = sf::Text("Score: " + std::to_string(score), data->assets.GetFont(defaultFont), 50);
 	scoreText.setFillColor(sf::Color::White);
 	scoreText.setOutlineColor(sf::Color::Black);
 	scoreText.setOutlineThickness(2);
@@ -59,6 +59,7 @@ void Widgets::SetNewScore(const int& score)
 	scoreText.setString("Score: " + std::to_string(score));
 	scoreText.setOrigin(scoreText.getGlobalBounds().width, scoreText.getGlobalBounds().height);
 	scoreText.setPosition(WIDTH - 50, 65);
+	this->score = score;
 }
 
 void Widgets::Draw(sf::RenderWindow& window)
@@ -70,4 +71,9 @@ void Widgets::Draw(sf::RenderWindow& window)
 
 	window.draw(scoreText);
 	window.draw(numberOfBullets);
+}
+
+const int& Widgets::GetScore()
+{
+	return score;
 }

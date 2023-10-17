@@ -14,7 +14,7 @@ private:
 public:
 	Player(sf::Texture* texture, sf::Vector2f position, sf::Vector2f size = { 128, 128 });
 
-	void Attack();
+	void Attack(sf::Texture* bulletTexture);
 
 	void Move(sf::Vector2f move);
 	void Update();
@@ -23,6 +23,7 @@ public:
 
 	void RemoveOneHeart();
 
+	std::vector<Bullet>& GetBullets();
 	const int& GetNumberOfAvailableBullets();
 	const int& GetPlayerHealth();
 	const sf::CircleShape& GetCollisionCircle();
