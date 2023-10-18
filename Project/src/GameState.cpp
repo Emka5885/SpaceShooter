@@ -6,6 +6,8 @@
 
 GameState::GameState(GameDataReference& data) : data(data)
 {
+	data->window.setMouseCursorVisible(false);
+
 	widgets = new Widgets(data);
 	player = new Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
 

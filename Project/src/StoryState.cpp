@@ -11,6 +11,8 @@ StoryState::StoryState(GameDataReference& data) : data(data)
 
 void StoryState::Init()
 {
+	data->window.setMouseCursorVisible(false);
+
 	std::fstream file("res/story.txt");
 	while (!file.eof())
 	{

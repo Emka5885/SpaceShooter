@@ -8,6 +8,8 @@ MainMenuState::MainMenuState(GameDataReference& data) : data(data)
 
 void MainMenuState::Init()
 {
+	data->window.setMouseCursorVisible(true);
+
 	title = sf::Text(TITLE, data->assets.GetFont(defaultFont), 100);
 	title.setOrigin(title.getGlobalBounds().width / 2, title.getGlobalBounds().height / 2);
 	title.setPosition({ WIDTH / 2, 100 });

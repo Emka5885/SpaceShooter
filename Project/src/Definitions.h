@@ -12,7 +12,7 @@ constexpr const int MAX_HEALTH = 3;
 
 constexpr const int MAX_ATTACK_CHARGE_THRESHOLD = 25;
 constexpr const int BULLET_RADIUS = 20;
-constexpr const int BULLET_SPEED = 5;
+constexpr const int BULLET_SPEED = 8;
 
 constexpr const char* TITLE = "Space shooter";
 

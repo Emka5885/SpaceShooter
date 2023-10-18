@@ -9,6 +9,8 @@ EndState::EndState(GameDataReference& data, int score) : data(data), score(score
 
 void EndState::Init()
 {
+	data->window.setMouseCursorVisible(true);
+
 	scoreText = sf::Text(("Your score: " + std::to_string(score)), data->assets.GetFont(defaultFont), 75);
 	scoreText.setOrigin(scoreText.getGlobalBounds().width / 2, scoreText.getGlobalBounds().height / 2);
 	scoreText.setPosition({ WIDTH / 2, 100 });
