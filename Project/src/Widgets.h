@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Game.h"
+#include "HorizontalBar.h"
 
 class Widgets
 {
@@ -12,13 +13,15 @@ private:
 	sf::Text scoreText;
 	int score = 0;
 
+	HorizontalBar* coolingSystemBar;
+
 public:
 	Widgets(GameDataReference& data);
 
 	void Init();
 
 	void SetNewNumberOfFullHearts(const int& number, bool init = false);
-	void SetNewNumberOfBullets(const int& number);
+	void SetNewCoolingSystemBarFill(const int& percent);
 	void SetNewScore(const int& score);
 
 	void Draw(sf::RenderWindow& window);

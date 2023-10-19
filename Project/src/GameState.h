@@ -30,4 +30,6 @@ private:
 	sf::Clock newAlienClock;
 
 	int newAlienCounter = 5;
+
+	sf::Clock coolingSystemClock;
 };

@@ -113,7 +113,7 @@ std::vector<Bullet>& Player::GetBullets()
 	return bullets;
 }
 
-const int& Player::GetNumberOfAvailableBullets()
+const int& Player::GetNumberOfBulletsUsed()
 {
 	return bullets.size();
 }

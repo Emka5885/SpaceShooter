@@ -110,7 +110,7 @@ void GameState::HandleInput()
 void GameState::Update()
 {
 	player->Update();
-	widgets->SetNewNumberOfBullets(player->GetNumberOfAvailableBullets());
+	widgets->SetNewCoolingSystemBarFill(100);
 	for (int i = 0; i < aliens.size(); i++)
 	{
 		aliens[i]->Update();

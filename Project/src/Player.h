@@ -24,7 +24,7 @@ public:
 	void RemoveOneHeart();
 
 	std::vector<Bullet>& GetBullets();
-	const int& GetNumberOfAvailableBullets();
+	const int& GetNumberOfBulletsUsed();
 	const int& GetPlayerHealth();
 	const sf::CircleShape& GetCollisionCircle();
 };

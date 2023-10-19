@@ -4,17 +4,18 @@
 
 Widgets::Widgets(GameDataReference& data) : data(data)
 {
+	coolingSystemBar = new HorizontalBar({ WIDTH / 2, HEIGHT - 100 });
 	Init();
 }
 
 void Widgets::Init()
 {
-	numberOfBullets = sf::Text("Attack charge", data->assets.GetFont(defaultFont), 30);
+	numberOfBullets = sf::Text("Laser cooling system", data->assets.GetFont(defaultFont), 18);
 	numberOfBullets.setFillColor(sf::Color::White);
 	numberOfBullets.setOutlineColor(sf::Color::Black);
 	numberOfBullets.setOutlineThickness(2);
 	numberOfBullets.setOrigin(numberOfBullets.getGlobalBounds().width / 2, numberOfBullets.getGlobalBounds().height / 2);
-	numberOfBullets.setPosition(WIDTH / 2, HEIGHT - 75 - numberOfBullets.getGlobalBounds().height / 2);
+	numberOfBullets.setPosition(WIDTH / 2, HEIGHT - 50 - numberOfBullets.getGlobalBounds().height / 2);
 
 	scoreText = sf::Text("Score: " + std::to_string(score), data->assets.GetFont(defaultFont), 50);
 	scoreText.setFillColor(sf::Color::White);
@@ -47,9 +48,9 @@ void Widgets::SetNewNumberOfFullHearts(const int& number, bool init)
 	}
 }
 
-void Widgets::SetNewNumberOfBullets(const int& number)
+void Widgets::SetNewCoolingSystemBarFill(const int& percent)
 {
-	
+	coolingSystemBar->SetNewBarFill(percent);
 }
 
 void Widgets::SetNewScore(const int& score)
@@ -68,6 +69,8 @@ void Widgets::Draw(sf::RenderWindow& window)
 	}
 
 	window.draw(scoreText);
+
+	coolingSystemBar->Draw(data->window);
 	window.draw(numberOfBullets);
 }
 
