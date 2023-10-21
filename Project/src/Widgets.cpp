@@ -50,7 +50,8 @@ void Widgets::SetNewNumberOfFullHearts(const int& number, bool init)
 
 void Widgets::SetNewCoolingSystemBarFill(const int& percent)
 {
-	coolingSystemBar->SetNewBarFill(percent);
+	coolingSystemBarFill = percent;
+	coolingSystemBar->SetNewBarFill(coolingSystemBarFill);
 }
 
 void Widgets::SetNewScore(const int& score)
@@ -77,4 +78,9 @@ void Widgets::Draw(sf::RenderWindow& window)
 const int& Widgets::GetScore()
 {
 	return score;
+}
+
+const int& Widgets::GetCoolingSystemBarFill()
+{
+	return coolingSystemBarFill;
 }

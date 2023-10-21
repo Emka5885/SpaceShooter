@@ -47,43 +47,62 @@ void GameState::HandleInput()
 			data->machine.RemoveState();
 			data->machine.AddState(stateReference(new MainMenuState(data)), true);
 		}
-		if (data->input.isKeyPressed(sf::Keyboard::Space) && attackClock.getElapsedTime().asSeconds() > 0.1)
+		if (data->input.isKeyPressed(sf::Keyboard::Space))
 		{
-			int randomBullet = rand() % 10;
-			switch (randomBullet)
+			if (!restartCoolingSystemFromZero)
 			{
-			case 0:
-				player->Attack(data->assets.GetTexture(bullet_01_image));
-				break;
-			case 1:
-				player->Attack(data->assets.GetTexture(bullet_02_image));
-				break;
-			case 2:
-				player->Attack(data->assets.GetTexture(bullet_03_image));
-				break;
-			case 3:
-				player->Attack(data->assets.GetTexture(bullet_04_image));
-				break;
-			case 4:
-				player->Attack(data->assets.GetTexture(bullet_05_image));
-				break;
-			case 5:
-				player->Attack(data->assets.GetTexture(bullet_06_image));
-				break;
-			case 6:
-				player->Attack(data->assets.GetTexture(bullet_07_image));
-				break;
-			case 7:
-				player->Attack(data->assets.GetTexture(bullet_08_image));
-				break;
-			case 8:
-				player->Attack(data->assets.GetTexture(bullet_09_image));
-				break;
-			case 9:
-				player->Attack(data->assets.GetTexture(bullet_10_image));
-				break;
+				if (!spacePressed)
+				{
+					coolingSystemClock.restart();
+					restartCoolingSystemFromZero = false;
+					coolingSystemMustWork = true;
+				}
+				spacePressed = true;
+				if (attackClock.getElapsedTime().asSeconds() > 0.1)
+				{
+					int randomBullet = rand() % 10;
+					switch (randomBullet)
+					{
+					case 0:
+						player->Attack(data->assets.GetTexture(bullet_01_image));
+						break;
+					case 1:
+						player->Attack(data->assets.GetTexture(bullet_02_image));
+						break;
+					case 2:
+						player->Attack(data->assets.GetTexture(bullet_03_image));
+						break;
+					case 3:
+						player->Attack(data->assets.GetTexture(bullet_04_image));
+						break;
+					case 4:
+						player->Attack(data->assets.GetTexture(bullet_05_image));
+						break;
+					case 5:
+						player->Attack(data->assets.GetTexture(bullet_06_image));
+						break;
+					case 6:
+						player->Attack(data->assets.GetTexture(bullet_07_image));
+						break;
+					case 7:
+						player->Attack(data->assets.GetTexture(bullet_08_image));
+						break;
+					case 8:
+						player->Attack(data->assets.GetTexture(bullet_09_image));
+						break;
+					case 9:
+						player->Attack(data->assets.GetTexture(bullet_10_image));
+						break;
+					}
+					attackClock.restart();
+				}
 			}
-			attackClock.restart();
+		}
+		else if (data->input.isKeyReleased() && spacePressed)
+		{
+			spacePressed = false;
+			coolingSystemMustWork2 = true;
+			coolingSystemRegenerationClock.restart();
 		}
 	}
 
@@ -110,7 +129,74 @@ void GameState::HandleInput()
 void GameState::Update()
 {
 	player->Update();
-	widgets->SetNewCoolingSystemBarFill(100);
+	if (spacePressed && widgets->GetCoolingSystemBarFill() > 0)
+	{
+		if (restartCoolingSystemFromHundred)
+		{
+			widgets->SetNewCoolingSystemBarFill(100 - int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
+		}
+		else
+		{
+			if (coolingSystemMustWork2)
+			{
+				coolingSystemMustWork2 = false;
+				previousStateOfCoolingSystem = 100 - widgets->GetCoolingSystemBarFill();
+			}
+			if (100 - int(previousStateOfCoolingSystem + coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) < 0)
+			{
+				widgets->SetNewCoolingSystemBarFill(0);
+			}
+			else
+			{
+				widgets->SetNewCoolingSystemBarFill(100 - int(previousStateOfCoolingSystem + coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
+			}
+		}
+	}
+	else if (spacePressed)
+	{
+		widgets->SetNewCoolingSystemBarFill(0);
+		spacePressed = false;
+		restartCoolingSystemFromZero = true;
+		restartCoolingSystemFromHundred = false;
+		coolingSystemClock.restart();
+	}
+	else
+	{
+		if (restartCoolingSystemFromZero)
+		{
+			if (int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) > 100)
+			{
+				widgets->SetNewCoolingSystemBarFill(100);
+				restartCoolingSystemFromZero = false;
+				restartCoolingSystemFromHundred = true;
+			}
+			else
+			{
+				widgets->SetNewCoolingSystemBarFill(int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
+				coolingSystemMustWork = true;
+				restartCoolingSystemFromHundred = false;
+			}
+		}
+		else
+		{
+			if (coolingSystemMustWork)
+			{
+				coolingSystemMustWork = false;
+				previousStateOfCoolingSystem = widgets->GetCoolingSystemBarFill();
+			}
+			if ((previousStateOfCoolingSystem + coolingSystemRegenerationClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) > 100)
+			{
+				widgets->SetNewCoolingSystemBarFill(100);
+				restartCoolingSystemFromHundred = true;
+			}
+			else
+			{
+				widgets->SetNewCoolingSystemBarFill(previousStateOfCoolingSystem + coolingSystemRegenerationClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM);
+				restartCoolingSystemFromHundred = false;
+			}
+		}
+	}
+
 	for (int i = 0; i < aliens.size(); i++)
 	{
 		aliens[i]->Update();

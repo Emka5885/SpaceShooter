@@ -13,6 +13,8 @@ private:
 	sf::Text scoreText;
 	int score = 0;
 
+	int coolingSystemBarFill = 100;
+
 	HorizontalBar* coolingSystemBar;
 
 public:
@@ -27,4 +29,5 @@ public:
 	void Draw(sf::RenderWindow& window);
 
 	const int& GetScore();
+	const int& GetCoolingSystemBarFill();
 };

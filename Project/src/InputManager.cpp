@@ -18,6 +18,11 @@ bool InputManager::isKeyPressed(sf::Keyboard::Key key)
     return sf::Keyboard::isKeyPressed(key);
 }
 
+bool InputManager::isKeyReleased()
+{
+    return sf::Event::KeyReleased;
+}
+
 bool InputManager::isButtonHovered(sf::RectangleShape object, sf::RenderWindow& window)
 {
     sf::IntRect tempRect(object.getPosition().x - object.getGlobalBounds().width / 2, object.getPosition().y - object.getGlobalBounds().height / 2, object.getGlobalBounds().width, object.getGlobalBounds().height);

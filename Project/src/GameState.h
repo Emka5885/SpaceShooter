@@ -32,4 +32,11 @@ private:
 	int newAlienCounter = 5;
 
 	sf::Clock coolingSystemClock;
+	sf::Clock coolingSystemRegenerationClock;
+	bool spacePressed = false;
+	bool restartCoolingSystemFromZero = false;
+	bool restartCoolingSystemFromHundred = true;
+	bool coolingSystemMustWork = false;
+	bool coolingSystemMustWork2 = false;
+	int previousStateOfCoolingSystem = 100;
 };
