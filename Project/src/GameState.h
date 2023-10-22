@@ -16,6 +16,8 @@ public:
 	void Update();
 	void Draw();
 
+	void LaserCoolingSystem();
+
 private:
 	GameDataReference& data;
 

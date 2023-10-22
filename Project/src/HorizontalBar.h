@@ -14,6 +14,7 @@ public:
 
 	void Init(sf::Vector2f position, sf::Vector2f size);
 
+	void SetNewBarFillColor(sf::Color color);
 	void SetNewBarFill(int percent);
 
 	void Draw(sf::RenderWindow& window);

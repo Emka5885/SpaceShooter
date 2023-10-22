@@ -129,73 +129,7 @@ void GameState::HandleInput()
 void GameState::Update()
 {
 	player->Update();
-	if (spacePressed && widgets->GetCoolingSystemBarFill() > 0)
-	{
-		if (restartCoolingSystemFromHundred)
-		{
-			widgets->SetNewCoolingSystemBarFill(100 - int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
-		}
-		else
-		{
-			if (coolingSystemMustWork2)
-			{
-				coolingSystemMustWork2 = false;
-				previousStateOfCoolingSystem = 100 - widgets->GetCoolingSystemBarFill();
-			}
-			if (100 - int(previousStateOfCoolingSystem + coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) < 0)
-			{
-				widgets->SetNewCoolingSystemBarFill(0);
-			}
-			else
-			{
-				widgets->SetNewCoolingSystemBarFill(100 - int(previousStateOfCoolingSystem + coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
-			}
-		}
-	}
-	else if (spacePressed)
-	{
-		widgets->SetNewCoolingSystemBarFill(0);
-		spacePressed = false;
-		restartCoolingSystemFromZero = true;
-		restartCoolingSystemFromHundred = false;
-		coolingSystemClock.restart();
-	}
-	else
-	{
-		if (restartCoolingSystemFromZero)
-		{
-			if (int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) > 100)
-			{
-				widgets->SetNewCoolingSystemBarFill(100);
-				restartCoolingSystemFromZero = false;
-				restartCoolingSystemFromHundred = true;
-			}
-			else
-			{
-				widgets->SetNewCoolingSystemBarFill(int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
-				coolingSystemMustWork = true;
-				restartCoolingSystemFromHundred = false;
-			}
-		}
-		else
-		{
-			if (coolingSystemMustWork)
-			{
-				coolingSystemMustWork = false;
-				previousStateOfCoolingSystem = widgets->GetCoolingSystemBarFill();
-			}
-			if ((previousStateOfCoolingSystem + coolingSystemRegenerationClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) > 100)
-			{
-				widgets->SetNewCoolingSystemBarFill(100);
-				restartCoolingSystemFromHundred = true;
-			}
-			else
-			{
-				widgets->SetNewCoolingSystemBarFill(previousStateOfCoolingSystem + coolingSystemRegenerationClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM);
-				restartCoolingSystemFromHundred = false;
-			}
-		}
-	}
+	LaserCoolingSystem();
 
 	for (int i = 0; i < aliens.size(); i++)
 	{
@@ -277,4 +211,77 @@ void GameState::Draw()
 	widgets->Draw(data->window);
 
 	data->window.display();
+}
+
+void GameState::LaserCoolingSystem()
+{
+	if (spacePressed && widgets->GetCoolingSystemBarFill() > 0)
+	{
+		if (restartCoolingSystemFromHundred)
+		{
+			widgets->SetNewCoolingSystemBarFill(100 - int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
+		}
+		else
+		{
+			if (coolingSystemMustWork2)
+			{
+				coolingSystemMustWork2 = false;
+				previousStateOfCoolingSystem = 100 - widgets->GetCoolingSystemBarFill();
+			}
+			if (100 - int(previousStateOfCoolingSystem + coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) < 0)
+			{
+				widgets->SetNewCoolingSystemBarFill(0);
+			}
+			else
+			{
+				widgets->SetNewCoolingSystemBarFill(100 - int(previousStateOfCoolingSystem + coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
+			}
+		}
+	}
+	else if (spacePressed)
+	{
+		widgets->SetNewCoolingSystemBarFill(0);
+		widgets->SetNewCoolingSystemBarFillColor(sf::Color::Red);
+		spacePressed = false;
+		restartCoolingSystemFromZero = true;
+		restartCoolingSystemFromHundred = false;
+		coolingSystemClock.restart();
+	}
+	else
+	{
+		if (restartCoolingSystemFromZero)
+		{
+			if (int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) > 100)
+			{
+				widgets->SetNewCoolingSystemBarFill(100);
+				restartCoolingSystemFromZero = false;
+				restartCoolingSystemFromHundred = true;
+				widgets->SetNewCoolingSystemBarFillColor();
+			}
+			else
+			{
+				widgets->SetNewCoolingSystemBarFill(int(coolingSystemClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM));
+				coolingSystemMustWork = true;
+				restartCoolingSystemFromHundred = false;
+			}
+		}
+		else
+		{
+			if (coolingSystemMustWork)
+			{
+				coolingSystemMustWork = false;
+				previousStateOfCoolingSystem = widgets->GetCoolingSystemBarFill();
+			}
+			if ((previousStateOfCoolingSystem + coolingSystemRegenerationClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM) > 100)
+			{
+				widgets->SetNewCoolingSystemBarFill(100);
+				restartCoolingSystemFromHundred = true;
+			}
+			else
+			{
+				widgets->SetNewCoolingSystemBarFill(previousStateOfCoolingSystem + coolingSystemRegenerationClock.getElapsedTime().asSeconds() * 100 / MAX_TIME_WITHOUT_USING_COOLING_SYSTEM);
+				restartCoolingSystemFromHundred = false;
+			}
+		}
+	}
 }

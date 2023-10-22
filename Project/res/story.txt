@@ -1,15 +1,23 @@
-A long time ago in a galaxy far, far away,
+Once upon a time in a galaxy far, far away,
 Humans and aliens lived together in harmony.
 However, one day they quarreled a lot,
-Because of which a great battle began.
+Because of this, a great battle began.
 Although the aliens had a bigger army than humans,
 They did not have the greatest warrior of all time.
 Although he did not belong to the human species,
-He believed they were right in the dispute,
+He believed that they were right in the dispute,
 Which made him defend them at all costs.
-However, now there were some complications,
-Which makes it necessary for you to help him fight.
-To move the ship use WSDA, to shoot press space.
+However, now some complications have arisen,
+Which makes you have to help him in this fight.
+To move the ship use WSDA, to shoot press the spacebar.
+Always keep an eye on the laser cooling system.
+When its level goes down to zero, it will be harder.
+You won't be able to shoot until it regenerates.
 Try to shoot down as many enemy ships as possible.
-Also, don't let the aliens destroy your ship,
-It has a certain stamina, which you constantly control.
+You get 1 point for each enemy ship destroyed.
+Your goal is to score as many points as possible.
+However, it couldn't be too easy, you also have to be careful.
+The aliens will want to stop you and destroy your ship.
+It has a certain strength, which you have to watch constantly.
+If an alien flies into you, you will lose one life.
+If you lose all your lives, the game is over.

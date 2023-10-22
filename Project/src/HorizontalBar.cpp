@@ -22,6 +22,11 @@ void HorizontalBar::Init(sf::Vector2f position, sf::Vector2f size)
 	SetNewBarFill(100);
 }
 
+void HorizontalBar::SetNewBarFillColor(sf::Color color)
+{
+	full.setFillColor(color);
+}
+
 void HorizontalBar::SetNewBarFill(int percent)
 {
 	full.setSize({ onePartOfFull * percent, empty.getSize().y });

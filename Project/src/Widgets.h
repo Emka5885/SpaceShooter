@@ -24,6 +24,7 @@ public:
 
 	void SetNewNumberOfFullHearts(const int& number, bool init = false);
 	void SetNewCoolingSystemBarFill(const int& percent);
+	void SetNewCoolingSystemBarFillColor(sf::Color color = sf::Color(160, 230, 255));
 	void SetNewScore(const int& score);
 
 	void Draw(sf::RenderWindow& window);

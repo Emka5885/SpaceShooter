@@ -80,6 +80,11 @@ const int& Widgets::GetScore()
 	return score;
 }
 
+void Widgets::SetNewCoolingSystemBarFillColor(sf::Color color)
+{
+	coolingSystemBar->SetNewBarFillColor(color);
+}
+
 const int& Widgets::GetCoolingSystemBarFill()
 {
 	return coolingSystemBarFill;
