@@ -15,7 +15,7 @@ constexpr const int MAX_TIME_WITHOUT_USING_COOLING_SYSTEM = 2;
 constexpr const int BULLET_RADIUS = 20;
 constexpr const int BULLET_SPEED = 8;
 
-constexpr const char* TITLE = "Space shooter";
+constexpr const char* TITLE = "Space Shooter";
 
 constexpr const char* defaultFont = "defaultFont";
 constexpr const char* defaultFont_path = "res/fonts/MilkyNice.ttf";
