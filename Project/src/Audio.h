@@ -8,9 +8,11 @@ private:
 	sf::SoundBuffer buttonsSoundBuffer;
 	sf::Sound buttonsSound;
 
-	sf::Music backgroundMusic;
+	sf::Music menuBackgroundMusic;
+	sf::Music gameBackgroundMusic;
 
-	bool musicFileExist = true;
+	bool menuMusicFileExist = true;
+	bool gameMusicFileExist = true;
 	bool buttonSoundFileExist = true;
 
 public:
@@ -18,7 +20,7 @@ public:
 
 	void Init();
 
-	void PlayMusic();
+	void PlayMusic(bool menu = true);
 	void StopMusic();
 	void PlayButtonSound();
 };

@@ -8,14 +8,24 @@ Audio::Audio()
 
 void Audio::Init()
 {
-	if (!backgroundMusic.openFromFile("res/music/file.wav"))
+	if (!menuBackgroundMusic.openFromFile("res/music/battle-of-the-dragons-8037.wav"))
 	{
-		std::cout << "Error - background music" << std::endl;
-		musicFileExist = false;
+		std::cout << "Error - menu background music" << std::endl;
+		menuMusicFileExist = false;
 	}
 	else
 	{
-		backgroundMusic.setLoop(true);
+		menuBackgroundMusic.setLoop(true);
+		menuBackgroundMusic.setVolume(70);
+	}
+	if (!gameBackgroundMusic.openFromFile("res/music/file.wav"))
+	{
+		std::cout << "Error - game background music" << std::endl;
+		gameMusicFileExist = false;
+	}
+	else
+	{
+		gameBackgroundMusic.setLoop(true);
 	}
 
 	if (!buttonsSoundBuffer.loadFromFile("res/sounds/toy-button-105724.wav"))
@@ -29,16 +39,28 @@ void Audio::Init()
 	}
 }
 
-void Audio::PlayMusic()
+void Audio::PlayMusic(bool menu)
 {
-	if(musicFileExist)
-		backgroundMusic.play();
+	if (menuMusicFileExist && menu)
+	{
+		menuBackgroundMusic.play();
+	}
+	else if (gameMusicFileExist && !menu)
+	{
+		gameBackgroundMusic.play();
+	}
 }
 
 void Audio::StopMusic()
 {
-	if(musicFileExist)
-		backgroundMusic.stop();
+	if (menuMusicFileExist)
+	{
+		menuBackgroundMusic.stop();
+	}
+	if (gameMusicFileExist)
+	{
+		gameBackgroundMusic.stop();
+	}
 }
 
 void Audio::PlayButtonSound()

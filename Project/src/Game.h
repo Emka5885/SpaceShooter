@@ -6,6 +6,7 @@
 #include "StateMachine.h"
 #include "AssetManager.h"
 #include "InputManager.h"
+#include "Audio.h"
 
 struct GameData
 {
@@ -13,6 +14,7 @@ struct GameData
 	sf::RenderWindow window;
 	AssetManager assets;
 	InputManager input;
+	Audio audio;
 	sf::RectangleShape backgroundImage;
 };
 

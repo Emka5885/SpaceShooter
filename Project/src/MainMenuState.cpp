@@ -9,6 +9,7 @@ MainMenuState::MainMenuState(GameDataReference& data) : data(data)
 void MainMenuState::Init()
 {
 	data->window.setMouseCursorVisible(true);
+	data->audio.PlayMusic();
 
 	title = sf::Text(TITLE, data->assets.GetFont(defaultFont), 100);
 	title.setOrigin(title.getGlobalBounds().width / 2, title.getGlobalBounds().height / 2);
@@ -55,11 +56,13 @@ void MainMenuState::HandleInput()
 		if (data->input.isButtonClicked(quittButton.GetShape(), sf::Mouse::Left, data->window))
 		{
 			quittButton.Clicked();
+			data->audio.PlayButtonSound();
 			type = quitt;
 		}
 		else if (data->input.isButtonClicked(playButton.GetShape(), sf::Mouse::Left, data->window))
 		{
 			playButton.Clicked();
+			data->audio.PlayButtonSound();
 			type = play;
 		}
 		// hovered
