@@ -26,9 +26,10 @@ void Audio::Init()
 	else
 	{
 		gameBackgroundMusic.setLoop(true);
+		gameBackgroundMusic.setVolume(70);
 	}
 
-	if (!buttonsSoundBuffer.loadFromFile("res/sounds/toy-button-105724.wav"))
+	if (!buttonsSoundBuffer.loadFromFile("res/sounds/button-4-88356.wav"))
 	{
 		std::cout << "Error - button sound" << std::endl;
 		buttonSoundFileExist = false;

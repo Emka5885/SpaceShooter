@@ -2,6 +2,7 @@
 #include "State.h"
 #include "Game.h"
 #include "Button.h"
+#include "Comet.h"
 
 enum menuType { defaultMenu, play, quitt };
 
@@ -24,4 +25,6 @@ private:
 	Button quittButton;
 
 	menuType type = defaultMenu;
+
+	Comet* comet;
 };

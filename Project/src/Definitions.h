@@ -6,6 +6,8 @@ constexpr const double PI = 3.14159265359;
 constexpr const int WIDTH = 1200;
 constexpr const int HEIGHT = 800;
 
+constexpr const int COMET_SPEED = 400;
+
 constexpr const int PLAYER_SPEED = 3;
 
 constexpr const int MAX_HEALTH = 3;
@@ -25,6 +27,9 @@ constexpr const char* storyFont_path = "res/fonts/starguard.ttf";
 
 constexpr const char* background = "background";
 constexpr const char* background_path = "res/images/Background.png";
+
+constexpr const char* comet_image = "comet";
+constexpr const char* comet_path = "res/images/comet.png";
 
 constexpr const char* aliens_01_image = "aliens_01";
 constexpr const char* aliens_01_path = "res/images/aliens_01.png";

@@ -25,6 +25,7 @@
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Collision.cpp" />
+    <ClCompile Include="src\Comet.cpp" />
     <ClCompile Include="src\EndState.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameState.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Collision.h" />
+    <ClInclude Include="src\Comet.h" />
     <ClInclude Include="src\Definitions.h" />
     <ClInclude Include="src\EndState.h" />
     <ClInclude Include="src\Game.h" />

@@ -4,6 +4,7 @@
 
 MainMenuState::MainMenuState(GameDataReference& data) : data(data)
 {
+	comet = new Comet(data->assets.GetTexture(comet_image));
 }
 
 void MainMenuState::Init()
@@ -91,12 +92,22 @@ void MainMenuState::HandleInput()
 
 void MainMenuState::Update()
 {
+	comet->Update();
+
+	if (comet->GetDestroy())
+	{
+		delete comet;
+
+		comet = new Comet(data->assets.GetTexture(comet_image));
+	}
 }
 
 void MainMenuState::Draw()
 {
 	data->window.clear(sf::Color::Black);
 	data->window.draw(data->backgroundImage);
+
+	comet->Draw(data->window);
 
 	data->window.draw(titleShadow);
 	data->window.draw(title);
