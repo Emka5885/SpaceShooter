@@ -11,6 +11,9 @@ void Game::Init()
 	data->window.create(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Close | sf::Style::Titlebar);
 	data->window.setFramerateLimit(60);
 
+	iconImage = data->assets.GetTexture(icon)->copyToImage();
+	data->window.setIcon(iconImage.getSize().x, iconImage.getSize().y, iconImage.getPixelsPtr());
+
 	data->machine.AddState(stateReference(new MainMenuState(data)), true);
 }
 

@@ -15,6 +15,7 @@ void AssetManager::InitFonts()
 
 void AssetManager::InitTextures()
 {
+	LoadTexture(icon, icon_path);
 	LoadTexture(background, background_path);
 	LoadTexture(comet_image, comet_path);
 

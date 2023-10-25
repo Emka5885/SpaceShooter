@@ -25,6 +25,9 @@ constexpr const char* defaultFont_path = "res/fonts/MilkyNice.ttf";
 constexpr const char* storyFont = "storyFont";
 constexpr const char* storyFont_path = "res/fonts/starguard.ttf";
 
+constexpr const char* icon = "icon";
+constexpr const char* icon_path = "res/images/icon.png";
+
 constexpr const char* background = "background";
 constexpr const char* background_path = "res/images/Background.png";
 
