@@ -31,8 +31,6 @@ void EndState::Init()
 
 	buttonsText.setString("Menu");
 	mainMenuButton = Button(buttonsSize, buttonsText, { WIDTH / 2, restartButton.GetShape().getPosition().y + 200 }, 10);
-
-	sf::sleep(sf::seconds(0.2));
 }
 
 void EndState::HandleInput()

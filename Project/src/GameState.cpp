@@ -7,6 +7,7 @@
 GameState::GameState(GameDataReference& data) : data(data)
 {
 	data->window.setMouseCursorVisible(false);
+	data->audio.PlayMusic();
 
 	widgets = new Widgets(data);
 	player = new Player(data->assets.GetTexture(spaceship_image), { WIDTH / 2, HEIGHT / 2 });
@@ -182,6 +183,7 @@ void GameState::Update()
 	if (collision.CheckIfAlienHitPlayer(aliens, *player))
 	{
 		player->RemoveOneHeart();
+		data->audio.PlayHitSound();
 		widgets->SetNewNumberOfFullHearts(player->GetPlayerHealth());
 	}
 
@@ -189,8 +191,10 @@ void GameState::Update()
 
 	if (player->GetPlayerHealth() <= 0)
 	{
+		data->audio.PlayGameOverSound();
 		data->machine.RemoveState();
 		data->machine.AddState(stateReference(new EndState(data, widgets->GetScore())), true);
+		sf::sleep(sf::seconds(1));
 	}
 }
 

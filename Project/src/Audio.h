@@ -5,15 +5,15 @@ class Audio
 {
 private:
 
-	sf::SoundBuffer buttonsSoundBuffer;
-	sf::Sound buttonsSound;
+	sf::SoundBuffer buttonsSoundBuffer, hitSoundBuffer, gameOverSoundBuffer;
+	sf::Sound buttonsSound, hitSound, gameOverSound;
 
-	sf::Music menuBackgroundMusic;
-	sf::Music gameBackgroundMusic;
+	sf::Music backgroundMusic;
 
-	bool menuMusicFileExist = true;
-	bool gameMusicFileExist = true;
+	bool musicFileExist = true;
 	bool buttonSoundFileExist = true;
+	bool hitSoundFileExist = true;
+	bool gameOverSoundFileExist = true;
 
 public:
 	Audio();
@@ -23,4 +23,6 @@ public:
 	void PlayMusic(bool menu = true);
 	void StopMusic();
 	void PlayButtonSound();
+	void PlayHitSound();
+	void PlayGameOverSound();
 };

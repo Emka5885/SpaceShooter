@@ -8,25 +8,15 @@ Audio::Audio()
 
 void Audio::Init()
 {
-	if (!menuBackgroundMusic.openFromFile("res/music/battle-of-the-dragons-8037.wav"))
+	if (!backgroundMusic.openFromFile("res/music/battle-of-the-dragons-8037.wav"))
 	{
-		std::cout << "Error - menu background music" << std::endl;
-		menuMusicFileExist = false;
+		std::cout << "Error - background music" << std::endl;
+		musicFileExist = false;
 	}
 	else
 	{
-		menuBackgroundMusic.setLoop(true);
-		menuBackgroundMusic.setVolume(70);
-	}
-	if (!gameBackgroundMusic.openFromFile("res/music/file.wav"))
-	{
-		std::cout << "Error - game background music" << std::endl;
-		gameMusicFileExist = false;
-	}
-	else
-	{
-		gameBackgroundMusic.setLoop(true);
-		gameBackgroundMusic.setVolume(70);
+		backgroundMusic.setLoop(true);
+		backgroundMusic.setVolume(70);
 	}
 
 	if (!buttonsSoundBuffer.loadFromFile("res/sounds/button-4-88356.wav"))
@@ -38,29 +28,40 @@ void Audio::Init()
 	{
 		buttonsSound.setBuffer(buttonsSoundBuffer);
 	}
+	if (!hitSoundBuffer.loadFromFile("res/sounds/metal-hit-cartoon-7118.wav"))
+	{
+		std::cout << "Error - hit sound" << std::endl;
+		hitSoundFileExist = false;
+	}
+	else
+	{
+		hitSound.setBuffer(hitSoundBuffer);
+	}
+	if (!gameOverSoundBuffer.loadFromFile("res/sounds/083822_8-bit-quotgame-overquot-82872.wav"))
+	{
+		std::cout << "Error - game over sound" << std::endl;
+		gameOverSoundFileExist = false;
+	}
+	else
+	{
+		gameOverSound.setBuffer(gameOverSoundBuffer);
+	}
+	
 }
 
 void Audio::PlayMusic(bool menu)
 {
-	if (menuMusicFileExist && menu)
+	if (musicFileExist && menu)
 	{
-		menuBackgroundMusic.play();
-	}
-	else if (gameMusicFileExist && !menu)
-	{
-		gameBackgroundMusic.play();
+		backgroundMusic.play();
 	}
 }
 
 void Audio::StopMusic()
 {
-	if (menuMusicFileExist)
+	if (musicFileExist)
 	{
-		menuBackgroundMusic.stop();
-	}
-	if (gameMusicFileExist)
-	{
-		gameBackgroundMusic.stop();
+		backgroundMusic.stop();
 	}
 }
 
@@ -68,4 +69,16 @@ void Audio::PlayButtonSound()
 {
 	if(buttonSoundFileExist)
 		buttonsSound.play();
+}
+
+void Audio::PlayHitSound()
+{
+	if(hitSoundFileExist)
+		hitSound.play();
+}
+
+void Audio::PlayGameOverSound()
+{
+	if(gameOverSoundFileExist)
+		gameOverSound.play();
 }

@@ -12,13 +12,13 @@ void Comet::Init(sf::Texture* texture)
 	shape.setTexture(texture);
 	if (rand() % 2)
 	{
-		x = rand() % WIDTH + 100;
+		x = rand() % WIDTH + 200;
 		y = -100;
 	}
 	else
 	{
 		x = WIDTH + 100;
-		y = rand() % HEIGHT - 100;
+		y = rand() % HEIGHT - 200;
 	}
 	
 	shape.setPosition(x,y);
